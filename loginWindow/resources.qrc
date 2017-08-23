@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>blue-wallpaper-7.jpg</file>
+        <file>Logomakr_1pFmsQ.png</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>download.png</file>
+    </qresource>
+</RCC>
