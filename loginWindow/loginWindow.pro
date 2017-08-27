@@ -28,8 +28,9 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h
 
-FORMS    += mainwindow.ui \
-    mainscrren.ui
+FORMS    += \
+    mainscrren.ui \
+    loginwindow.ui
 
 RESOURCES += \
     resources.qrc
