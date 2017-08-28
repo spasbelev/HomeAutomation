@@ -1,5 +1,6 @@
 #include "smarthomeembeddedcore.h"
 #include <QtNetwork>
+#include "wiringPi.h"
 
 SmartHomeEmbeddedCore::SmartHomeEmbeddedCore()
 {
@@ -24,6 +25,7 @@ SmartHomeEmbeddedCore::SmartHomeEmbeddedCore()
     if (ipAddress.isEmpty())
         ipAddress = QHostAddress(QHostAddress::LocalHost).toString();
 
+    wiringPiSetup();
 }
 
 SmartHomeEmbeddedCore& SmartHomeEmbeddedCore::getServerInstance()

@@ -23,13 +23,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += smarthomeembeddedcore.cpp \
-    smartHomeEmbeddedServer.cpp
+    smartHomeEmbeddedServer.cpp \
+    humidityandtemperaturesensor.cpp \
+
 
 HEADERS += smarthomeembeddedcore.h\
         smarthomeembeddedcore_global.h \
-    smartHomeEmbeddedServer.h
+    smartHomeEmbeddedServer.h \
+    humidityandtemperaturesensor.h
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/release/ -lwiringPi
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/debug/ -lwiringPi
+else:unix: LIBS += -L$$PWD/../../../../usr/local/lib/ -lwiringPi
+
+INCLUDEPATH += $$PWD/../../../../usr/local/include
+DEPENDPATH += $$PWD/../../../../usr/local/include
