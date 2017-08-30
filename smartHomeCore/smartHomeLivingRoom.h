@@ -1,6 +1,8 @@
 #ifndef SMARTHOMELIVINGROOM_H
 #define SMARTHOMELIVINGROOM_H
 
+#include <memory>
+
 class homeCommunication;
 
 class smartHomeLivingRoom
@@ -20,6 +22,7 @@ private:
     void getInformation();
 
 private:
+    static uint8_t array[5];
     double livingRoomTemperature;
     double livingRoomHumidity;
     int livingRoomLightPower;

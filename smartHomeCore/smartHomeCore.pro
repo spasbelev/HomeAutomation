@@ -34,7 +34,8 @@ HEADERS += smartHomeCore.h\
         smarthomecore_global.h \
     homeCommunication.h \
     smartHomeLivingRoom.h \
-    smartHomeKitchen.h
+    smartHomeKitchen.h \
+    communicationmessagesdefinition.h
 
 unix {
     target.path = /usr/lib

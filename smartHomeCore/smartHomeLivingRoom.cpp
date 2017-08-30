@@ -1,6 +1,14 @@
 #include "smartHomeLivingRoom.h"
 #include "homeCommunication.h"
 
+#include "communicationmessagesdefinition.h"
+
+enum
+{
+    SET_TEMPERATURE,
+    SET_LIGHT_POWER,
+};
+
 smartHomeLivingRoom::smartHomeLivingRoom() : mHomeCommunicationPort(homeCommunication::returnInstance())
 {
 
@@ -23,12 +31,14 @@ int smartHomeLivingRoom::getLivingRoomLuminocity() const
 void smartHomeLivingRoom::setLivingRoomTemperature(const double temperature)
 {
     this->livingRoomTemperature = temperature;
-    this->mHomeCommunicationPort.sendInformation(temperature);
+    this->array[0] = SET_TEMPERATURE;
+    this->array[1] = static_cast<uint8_t>(temperature);
+    this->mHomeCommunicationPort.sendInformation(SET_LIVINGROOM_TEMPERATURE,array);
 }
 
 void smartHomeLivingRoom::setLivingRoomLightPower(const int lightPower)
 {
     this->livingRoomLightPower = lightPower;
-    this->mHomeCommunicationPort.sendInformation(lightPower);
+    this->mHomeCommunicationPort.sendInformation(SET_LIVINGROOM_LIGHT_POWER,lightPower);
 
 }

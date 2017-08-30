@@ -7,6 +7,7 @@ homeCommunication::homeCommunication() : localMachineName(QHostInfo::localHostNa
 {
     this->connect();
     QObject::connect(this->tcpSocket, SIGNAL(readyRead()), SLOT(readTcpData()));
+    QObject::connect(this, SIGNAL(getInformationReady()), SLOT(notifyGUI()));
 }
 
 homeCommunication::~homeCommunication()
@@ -15,15 +16,18 @@ homeCommunication::~homeCommunication()
 }
 
 template <typename dataTypeToBeSent>
-void homeCommunication::sendInformation(dataTypeToBeSent dataToSend) const
+void homeCommunication::sendInformation(int messageType, dataTypeToBeSent dataToSend)
 {
-    tcpSocket->writeData(dataToSend, sizeof(dataToSend));
+    memcpy(&dataPacketToBeSent, messageType,sizeof(messageType) );
+    memcpy(dataPacketToBeSent + 1, dataToSend, sizeof(dataToSend));
+    tcpSocket->writeData(dataPacketToBeSent, sizeof(dataPacketToBeSent));
 }
 
 template <typename dataTypeToBeSent>
-dataTypeToBeSent homeCommunication::getInformation() const
+dataTypeToBeSent homeCommunication::reuqestInformation(int requestForSpecificType)
 {
-
+    sendInformation(requestForSpecificType,0);
+    QByteArray receivedData =  tcpSocket->readAll();
 }
 
 homeCommunication& homeCommunication::returnInstance()
@@ -75,8 +79,13 @@ void homeCommunication::displayError(QAbstractSocket::SocketError socketError)
     }
 
 }
+void homeCommunication::notifyGUI()
+{
+
+}
 
 void homeCommunication::readTcpData()
 {
     this->dataReceived = tcpSocket->readAll();
+    emit getInformationReady();
 }

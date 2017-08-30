@@ -2,7 +2,6 @@
 #define SMARTHOMEKITCHEN_H
 
 
-
 class homeCommunication;
 
 class smartHomeKitchen

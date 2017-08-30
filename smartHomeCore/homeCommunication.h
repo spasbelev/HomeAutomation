@@ -13,10 +13,10 @@ class homeCommunication : public QDialog
 public:
 
     template <typename dataTypeToBeSent>
-    void sendInformation(dataTypeToBeSent dataToSend) const;
+    void sendInformation(int messageType, dataTypeToBeSent dataToSend);
 
     template <typename dataTypeToBeSent>
-    dataTypeToBeSent getInformation() const;
+    dataTypeToBeSent reuqestInformation(int requestForSpecificType);
     static homeCommunication& returnInstance();
 
 private:
@@ -34,14 +34,18 @@ private:
     QNetworkSession *networkSession;
     QString localMachineName;
     QByteArray dataReceived;
+    QByteArray dataPacketToBeSent;
     QString hostName;
     quint16 port;
     QTcpSocket *tcpSocket;
 
+
 public slots:
     void readTcpData();
+    void notifyGUI();
 
-
+signals:
+    void getInformationReady();
 };
 
 #endif // HOMECOMMUNICATION_H
