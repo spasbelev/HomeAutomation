@@ -28,14 +28,16 @@ OPENSSL_LIBS='-L/usr/local/openssl/lib -lssl -lcrypto'
 SOURCES += smartHomeCore.cpp \
     homeCommunication.cpp \
     smartHomeLivingRoom.cpp \
-    smartHomeKitchen.cpp
+    smartHomeKitchen.cpp \
+    controllerformvcpattern.cpp
 
 HEADERS += smartHomeCore.h\
         smarthomecore_global.h \
     homeCommunication.h \
     smartHomeLivingRoom.h \
     smartHomeKitchen.h \
-    communicationmessagesdefinition.h
+    communicationmessagesdefinition.h \
+    controllerformvcpattern.h
 
 unix {
     target.path = /../lib

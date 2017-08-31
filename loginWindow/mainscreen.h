@@ -12,6 +12,9 @@ public:
 signals:
 
 public slots:
+    void updateTemperatureForKitchen(int temperatureInKitchen);
+    void updateHumidityForKitchen(int humidityInKitchen);
+
 };
 
 #endif // MAINSCREEN_H

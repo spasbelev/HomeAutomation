@@ -4,6 +4,13 @@
 #include <future>
 
 
+typedef enum
+{
+    MESSAGE_WITH_INFORMATION_FROM_KITCHEN,
+    MESSAGE_WITH_INFORMATION_FROM_LIVINGROOM,
+    MESSAGE_WITH_INFORMATION_FROM_BATHROOM
+}specificRoomMessage;
+
 homeCommunication::homeCommunication() : localMachineName(QHostInfo::localHostName())
 {
     this->connect();
@@ -82,7 +89,22 @@ void homeCommunication::displayError(QAbstractSocket::SocketError socketError)
 }
 void homeCommunication::notifyGUI()
 {
+    uint8_t messageTye = this->dataReceived[0];
 
+    switch(messageTye)
+    {
+        case MESSAGE_WITH_INFORMATION_FROM_KITCHEN:
+        {
+
+        }
+        case MESSAGE_WITH_INFORMATION_FROM_LIVINGROOM:
+        {
+
+        }
+        case MESSAGE_WITH_INFORMATION_FROM_BATHROOM:
+        {
+        }
+    }
 }
 
 void homeCommunication::readTcpData()

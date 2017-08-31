@@ -46,6 +46,9 @@ public slots:
 
 signals:
     void getInformationReady();
+//    void updateTemperatureForKitchen(int temperatureInKitchen);
+//    void updateHumidityForKitchen(int temperatureInKitchen);
+
 };
 
 #endif // HOMECOMMUNICATION_H

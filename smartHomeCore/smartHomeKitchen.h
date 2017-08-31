@@ -1,11 +1,14 @@
 #ifndef SMARTHOMEKITCHEN_H
 #define SMARTHOMEKITCHEN_H
 
+#include <QObject>
 
 class homeCommunication;
+class QByteArray;
 
-class smartHomeKitchen
+class smartHomeKitchen : public QObject
 {
+    Q_OBJECT
 public:
     smartHomeKitchen();
     /* Getter functions for the different sensosrs in a kitchen */
@@ -25,6 +28,9 @@ private:
     double kitchenRoomHumidity;
     int kitchenRoomLightPower;
     homeCommunication &mHomeCommunicationPort;
+
+public slots:
+    void getInformationForKitchen(QByteArray receivedData);
 };
 
 #endif // SMARTHOMEKITCHEN_H

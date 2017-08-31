@@ -1,10 +1,11 @@
+#include <QByteArray>
+
 #include "smartHomeKitchen.h"
 #include "homeCommunication.h"
 #include "communicationmessagesdefinition.h"
 
 smartHomeKitchen::smartHomeKitchen() : mHomeCommunicationPort(homeCommunication::returnInstance())
 {
-
 }
 
 
