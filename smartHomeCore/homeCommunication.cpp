@@ -1,6 +1,7 @@
 #include "homeCommunication.h"
 #include <QtNetwork/QDnsLookup>
 #include <QMessageBox>
+#include <future>
 
 
 homeCommunication::homeCommunication() : localMachineName(QHostInfo::localHostName())

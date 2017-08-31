@@ -38,6 +38,6 @@ HEADERS += smartHomeCore.h\
     communicationmessagesdefinition.h
 
 unix {
-    target.path = /usr/lib
+    target.path = /../lib
     INSTALLS += target
 }
