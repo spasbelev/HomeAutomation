@@ -1,5 +1,5 @@
 #include "smartHomeLivingRoom.h"
-#include "homeCommunication.h"
+#include "communicationlibrary.h"
 
 #include "communicationmessagesdefinition.h"
 
@@ -9,7 +9,7 @@ enum
     SET_LIGHT_POWER,
 };
 
-smartHomeLivingRoom::smartHomeLivingRoom() : mHomeCommunicationPort(homeCommunication::returnInstance())
+smartHomeLivingRoom::smartHomeLivingRoom() : mHomeCommunicationPort(CommunicationLibrary::returnInstance())
 {
 
 }

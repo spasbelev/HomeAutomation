@@ -3,7 +3,8 @@
 
 #include <QObject>
 
-class homeCommunication;
+
+class CommunicationLibrary;
 class QByteArray;
 
 class smartHomeKitchen : public QObject
@@ -27,7 +28,7 @@ private:
     double kitchenRoomTemperature;
     double kitchenRoomHumidity;
     int kitchenRoomLightPower;
-    homeCommunication &mHomeCommunicationPort;
+    CommunicationLibrary &mHomeCommunicationPort;
 
 public slots:
     void getInformationForKitchen(QByteArray receivedData);

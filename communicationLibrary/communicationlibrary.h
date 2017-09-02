@@ -1,13 +1,13 @@
-#ifndef HOMECOMMUNICATION_H
-#define HOMECOMMUNICATION_H
+#ifndef COMMUNICATIONLIBRARY_H
+#define COMMUNICATIONLIBRARY_H
 
-#include <QString>
-#include <QSsl>
 #include <QtNetwork>
-#include <memory>
-#include <QDialog>
 
-class homeCommunication : public QDialog
+class QByteArray;
+#include <QAbstractSocket>
+#include <QNetworkConfigurationManager>
+
+class CommunicationLibrary : public QObject
 {
     Q_OBJECT
 public:
@@ -17,10 +17,10 @@ public:
 
     template <typename dataTypeToBeSent>
     dataTypeToBeSent reuqestInformation(int requestForSpecificType);
-    static homeCommunication& returnInstance();
-    ~homeCommunication();
-//    homeCommunication(const homeCommunication &homeCommunication);
-    homeCommunication();
+    static CommunicationLibrary& returnInstance();
+    ~CommunicationLibrary();
+    CommunicationLibrary(const CommunicationLibrary &CommunicationLibraryInstance)=default;
+
 
 
 private:
@@ -31,7 +31,8 @@ private:
 
 
 private:
-    static homeCommunication singletonInstance;
+    CommunicationLibrary();
+    static CommunicationLibrary singletonInstance;
     QNetworkConfigurationManager manager;
     QNetworkSession *networkSession;
     QString localMachineName;
@@ -50,7 +51,6 @@ signals:
     void getInformationReady();
 //    void updateTemperatureForKitchen(int temperatureInKitchen);
 //    void updateHumidityForKitchen(int temperatureInKitchen);
-
 };
 
-#endif // HOMECOMMUNICATION_H
+#endif // COMMUNICATIONLIBRARY_H

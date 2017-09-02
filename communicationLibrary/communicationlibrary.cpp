@@ -1,6 +1,8 @@
-#include "homeCommunication.h"
+#include "communicationlibrary.h"
 #include <QtNetwork/QDnsLookup>
-#include <QMessageBox>
+#include <future>
+
+
 
 
 typedef enum
@@ -10,7 +12,7 @@ typedef enum
     MESSAGE_WITH_INFORMATION_FROM_BATHROOM
 }specificRoomMessage;
 
-homeCommunication::homeCommunication() : localMachineName(QHostInfo::localHostName())
+CommunicationLibrary::CommunicationLibrary() : localMachineName(QHostInfo::localHostName())
 {
     this->connect();
     QObject::connect(this->tcpSocket, SIGNAL(readyRead()), SLOT(readTcpData()));
@@ -22,13 +24,13 @@ homeCommunication::homeCommunication() : localMachineName(QHostInfo::localHostNa
 
 //}
 
-homeCommunication::~homeCommunication()
+CommunicationLibrary::~CommunicationLibrary()
 {
     this->disconnect();
 }
 
 template <typename dataTypeToBeSent>
-void homeCommunication::sendInformation(int messageType, dataTypeToBeSent dataToSend)
+void CommunicationLibrary::sendInformation(int messageType, dataTypeToBeSent dataToSend)
 {
     memcpy(&dataPacketToBeSent, messageType,sizeof(messageType) );
     memcpy(dataPacketToBeSent + 1, dataToSend, sizeof(dataToSend));
@@ -36,18 +38,18 @@ void homeCommunication::sendInformation(int messageType, dataTypeToBeSent dataTo
 }
 
 template <typename dataTypeToBeSent>
-dataTypeToBeSent homeCommunication::reuqestInformation(int requestForSpecificType)
+dataTypeToBeSent CommunicationLibrary::reuqestInformation(int requestForSpecificType)
 {
     sendInformation(requestForSpecificType,0);
     QByteArray receivedData =  tcpSocket->readAll();
 }
 
-homeCommunication& homeCommunication::returnInstance()
+CommunicationLibrary& CommunicationLibrary::returnInstance()
 {
     return singletonInstance;
 }
 
-void homeCommunication::connect()
+void CommunicationLibrary::connect()
 {
     QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
 
@@ -55,43 +57,43 @@ void homeCommunication::connect()
 
     if(tcpSocket->waitForConnected(300000))
     {
-        QMessageBox::information(this, "Connection timeout",
-                                 "Cannot connect to host. Please check your internet connection or make sure that the host is running");
+//        QMessageBox::information(this, "Connection timeout",
+//                                 "Cannot connect to host. Please check your internet connection or make sure that the host is running");
         tcpSocket->close();
     }
 }
 
-void homeCommunication::disconnect() const
+void CommunicationLibrary::disconnect() const
 {
     tcpSocket->close();
     delete tcpSocket;
 }
 
-void homeCommunication::displayError(QAbstractSocket::SocketError socketError)
+void CommunicationLibrary::displayError(QAbstractSocket::SocketError socketError)
 {
     switch (socketError) {
     case QAbstractSocket::RemoteHostClosedError:
         break;
     case QAbstractSocket::HostNotFoundError:
-        QMessageBox::information(this,"Connection error",
-                                 "The host was not found. Please check the "
-                                    "host name and port settings.");
+//        QMessageBox::information(this,"Connection error",
+//                                 "The host was not found. Please check the "
+//                                    "host name and port settings.");
         break;
     case QAbstractSocket::ConnectionRefusedError:
-        QMessageBox::information(this, "Connection error",
-                                 "The connection was refused by the peer. "
-                                    "Make sure the fortune server is running, "
-                                    "and check that the host name and port "
-                                    "settings are correct.");
+//        QMessageBox::information(this, "Connection error",
+//                                 "The connection was refused by the peer. "
+//                                    "Make sure the fortune server is running, "
+//                                    "and check that the host name and port "
+//                                    "settings are correct.");
         break;
     default:
-        QMessageBox::information(this, "FConnection error",
-                                 "The following error occurred: %1.",
-                                 tcpSocket->errorString());
+//        QMessageBox::information(this, "FConnection error",
+//                                 "The following error occurred: %1.",
+//                                 tcpSocket->errorString());
+        break;
     }
-
 }
-void homeCommunication::notifyGUI()
+void CommunicationLibrary::notifyGUI()
 {
     uint8_t messageTye = this->dataReceived[0];
 
@@ -111,7 +113,7 @@ void homeCommunication::notifyGUI()
     }
 }
 
-void homeCommunication::readTcpData()
+void CommunicationLibrary::readTcpData()
 {
     this->dataReceived = tcpSocket->readAll();
     emit getInformationReady();

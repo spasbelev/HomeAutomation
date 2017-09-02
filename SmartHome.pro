@@ -3,4 +3,5 @@ TEMPLATE = subdirs
 SUBDIRS += \
     smartHomeCore \
     smartHomeEmbeddedCore \
-    loginWindow
+    loginWindow \
+    communicationLibrary

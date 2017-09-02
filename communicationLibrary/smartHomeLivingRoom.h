@@ -3,7 +3,7 @@
 
 #include <memory>
 
-class homeCommunication;
+class CommunicationLibrary;
 
 class smartHomeLivingRoom
 {
@@ -26,7 +26,7 @@ private:
     double livingRoomTemperature;
     double livingRoomHumidity;
     int livingRoomLightPower;
-    homeCommunication &mHomeCommunicationPort;
+    CommunicationLibrary &mHomeCommunicationPort;
 };
 
 #endif // SMARTHOMELIVINGROOM_H
