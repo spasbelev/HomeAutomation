@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>mainScreenWindow</class>
+ <widget class="QWidget" name="mainScreenWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>768</height>
+    <width>1023</width>
+    <height>598</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#Form { 
+   <string notr="true">#mainScreenWindow { 
 background: rgba(32, 80, 96, 100);
 border-image: url(:/images/blue-wallpaper-7.jpg);
  }
@@ -44,12 +44,18 @@ QPushButton:hover { background-color: #66c011; }</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>510</y>
+     <y>350</y>
      <width>1021</width>
      <height>251</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="roomSelector">
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
     <item>
      <widget class="QPushButton" name="bedroom">
       <property name="sizePolicy">
@@ -165,8 +171,8 @@ QPushButton:hover { background-color: #66c011; }</string>
   <widget class="QWidget" name="horizontalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>30</y>
+     <x>-30</x>
+     <y>10</y>
      <width>1021</width>
      <height>161</height>
     </rect>

@@ -12,7 +12,7 @@ typedef enum
     MESSAGE_WITH_INFORMATION_FROM_BATHROOM
 }specificRoomMessage;
 
-CommunicationLibrary* CommunicationLibrary::singletonInstance = nullptr;
+CommunicationLibrary* CommunicationLibrary::singletonInstance = new CommunicationLibrary();
 
 CommunicationLibrary::CommunicationLibrary() : localMachineName(QHostInfo::localHostName())
 {
@@ -54,10 +54,11 @@ CommunicationLibrary* CommunicationLibrary::returnInstance()
 void CommunicationLibrary::connect()
 {
     QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
+    QHostAddress *hostAddres = new QHostAddress("192.168.0.1");
+    tcpSocket = new QTcpSocket();
+    tcpSocket->connectToHost(hostAddres->toString(),80, QTcpSocket::ReadWrite);
 
-    tcpSocket->connectToHost(this->hostName,this->port, QTcpSocket::ReadWrite);
-
-    if(tcpSocket->waitForConnected(300000))
+    if(tcpSocket->waitForConnected(3000))
     {
 //        QMessageBox::information(this, "Connection timeout",
 //                                 "Cannot connect to host. Please check your internet connection or make sure that the host is running");
@@ -89,9 +90,7 @@ void CommunicationLibrary::displayError(QAbstractSocket::SocketError socketError
 //                                    "settings are correct.");
         break;
     default:
-//        QMessageBox::information(this, "FConnection error",
-//                                 "The following error occurred: %1.",
-//                                 tcpSocket->errorString());
+
         break;
     }
 }
@@ -120,3 +119,4 @@ void CommunicationLibrary::readTcpData()
     this->dataReceived = tcpSocket->readAll();
     emit getInformationReady();
 }
+

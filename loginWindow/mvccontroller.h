@@ -4,7 +4,7 @@
 #include <QObject>
 #include <memory>
 #include "communicationlibrary.h"
-#include "mainscreen.h"
+#include "mainscreenwindow.h"
 
 class MVCController : public QObject
 {

@@ -51,7 +51,9 @@ signals:
     void getInformationReady();
     void updateTemperatureForKitchen(int temperatureInKitchen);
     void updateHumidityForKitchen(int temperatureInKitchen);
-    void showErrorMessage(QString errorMessage);
+    void updateTemperatureForLivingRoom(int temperatureInKLivingRoom);
+    void updateHumidityForLivingRoom(int temperatureInLivingRoom);
+    void errorMessage(QString errorMessage);
 };
 
 #endif // COMMUNICATIONLIBRARY_H

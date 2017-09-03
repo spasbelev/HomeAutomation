@@ -22,10 +22,10 @@ void MainWindow::on_pushButton_clicked()
     QString password = ui->lineEdit_2->text();
 
     if(username ==  "root" && password == "1234") {
-        QMessageBox::information(this, "Login", "Username and password is correct");
-        //hide();
-//        secDialog = new SecDialog(this);
-//        secDialog->show();
+//        QMessageBox::information(this, "Login", "Username and password is correct");
+        hide();
+        mainScreenWindowObj = new mainScreenWindow(this);
+        mainScreenWindowObj->show();
     }
     else {
         QMessageBox::warning(this,"Login", "Username or password is not correct");

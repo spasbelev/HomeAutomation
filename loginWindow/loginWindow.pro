@@ -26,16 +26,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    mainscreen.cpp \
-    mvccontroller.cpp
+    mvccontroller.cpp \
+    mainScreenScenario.cpp \
+    livingroomscreen.cpp \
+    mainscreenwindow.cpp
 
 HEADERS  += mainwindow.h \
-    mainscreen.h \
-    mvccontroller.h
+    mvccontroller.h \
+    catchheader.h \
+    livingroomscreen.h \
+    mainscreenwindow.h
 
 FORMS    += \
-    mainscrren.ui \
-    loginwindow.ui
+    loginwindow.ui \
+    livingroomscreen.ui \
+    mainscreenwindow.ui
 
 RESOURCES += \
     resources.qrc
