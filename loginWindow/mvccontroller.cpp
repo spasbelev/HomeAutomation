@@ -2,7 +2,7 @@
 
 MVCController::MVCController(QObject *parent) : QObject(parent)
 {
-    this->homeCommunicationObj = std::make_shared<CommunicationLibrary>(std::move(CommunicationLibrary::returnInstance()));
-    this->mainScreenObj = std::make_shared<mainScreen>();
+//    QObject::connect(CommunicationLibrary::returnInstance(), SIGNAL(updateTemperatureForKitchen(int temperatureInKitchen)),
+//                     mainScreen::getInstance(), SLOT(updateTemperatureDataForKitchen(int temperatureInKitchen)));
 }
 

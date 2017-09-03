@@ -4,7 +4,7 @@
 #include "communicationlibrary.h"
 #include "communicationmessagesdefinition.h"
 
-smartHomeKitchen::smartHomeKitchen() : mHomeCommunicationPort(CommunicationLibrary::returnInstance())
+smartHomeKitchen::smartHomeKitchen() : mHomeCommunicationPort((CommunicationLibrary::returnInstance()))
 {
 }
 
@@ -27,12 +27,12 @@ int smartHomeKitchen::getKitchenRoomLuminocity() const noexcept
 /*Setters for room temperature, and light power */
 void smartHomeKitchen::setKitchenRoomTemperature(const double temperature)
 {
-    this->mHomeCommunicationPort.sendInformation(SET_KITCHEN_TEMPERATURE, temperature);
+    this->mHomeCommunicationPort->sendInformation(SET_KITCHEN_TEMPERATURE, temperature);
 }
 
 void smartHomeKitchen::setKitchenRoomLightPower(const int lightPower)
 {
-    this->mHomeCommunicationPort.sendInformation(SET_KITCHEN_LIGHT_POWER, lightPower);
+    this->mHomeCommunicationPort->sendInformation(SET_KITCHEN_LIGHT_POWER, lightPower);
 }
 
 void smartHomeKitchen::getInformation()

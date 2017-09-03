@@ -26,7 +26,7 @@ private:
     double livingRoomTemperature;
     double livingRoomHumidity;
     int livingRoomLightPower;
-    CommunicationLibrary &mHomeCommunicationPort;
+    CommunicationLibrary *mHomeCommunicationPort;
 };
 
 #endif // SMARTHOMELIVINGROOM_H

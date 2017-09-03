@@ -9,7 +9,7 @@ enum
     SET_LIGHT_POWER,
 };
 
-smartHomeLivingRoom::smartHomeLivingRoom() : mHomeCommunicationPort(CommunicationLibrary::returnInstance())
+smartHomeLivingRoom::smartHomeLivingRoom() : mHomeCommunicationPort((CommunicationLibrary::returnInstance()))
 {
 
 }
@@ -33,12 +33,12 @@ void smartHomeLivingRoom::setLivingRoomTemperature(const double temperature)
     this->livingRoomTemperature = temperature;
     this->array[0] = SET_TEMPERATURE;
     this->array[1] = static_cast<uint8_t>(temperature);
-    this->mHomeCommunicationPort.sendInformation(SET_LIVINGROOM_TEMPERATURE,array);
+    this->mHomeCommunicationPort->sendInformation(SET_LIVINGROOM_TEMPERATURE,array);
 }
 
 void smartHomeLivingRoom::setLivingRoomLightPower(const int lightPower)
 {
     this->livingRoomLightPower = lightPower;
-    this->mHomeCommunicationPort.sendInformation(SET_LIVINGROOM_LIGHT_POWER,lightPower);
+    this->mHomeCommunicationPort->sendInformation(SET_LIVINGROOM_LIGHT_POWER,lightPower);
 
 }

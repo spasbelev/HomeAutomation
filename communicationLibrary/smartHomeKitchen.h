@@ -28,8 +28,7 @@ private:
     double kitchenRoomTemperature;
     double kitchenRoomHumidity;
     int kitchenRoomLightPower;
-    CommunicationLibrary &mHomeCommunicationPort;
-
+    CommunicationLibrary *mHomeCommunicationPort;
 public slots:
     void getInformationForKitchen(QByteArray receivedData);
 };

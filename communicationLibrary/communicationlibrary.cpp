@@ -12,6 +12,8 @@ typedef enum
     MESSAGE_WITH_INFORMATION_FROM_BATHROOM
 }specificRoomMessage;
 
+CommunicationLibrary* CommunicationLibrary::singletonInstance = nullptr;
+
 CommunicationLibrary::CommunicationLibrary() : localMachineName(QHostInfo::localHostName())
 {
     this->connect();
@@ -44,7 +46,7 @@ dataTypeToBeSent CommunicationLibrary::reuqestInformation(int requestForSpecific
     QByteArray receivedData =  tcpSocket->readAll();
 }
 
-CommunicationLibrary& CommunicationLibrary::returnInstance()
+CommunicationLibrary* CommunicationLibrary::returnInstance()
 {
     return singletonInstance;
 }

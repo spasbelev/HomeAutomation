@@ -17,7 +17,7 @@ public:
 
     template <typename dataTypeToBeSent>
     dataTypeToBeSent reuqestInformation(int requestForSpecificType);
-    static CommunicationLibrary& returnInstance();
+    static CommunicationLibrary* returnInstance();
     ~CommunicationLibrary();
     CommunicationLibrary(const CommunicationLibrary &CommunicationLibraryInstance)=default;
 
@@ -32,7 +32,7 @@ private:
 
 private:
     CommunicationLibrary();
-    static CommunicationLibrary singletonInstance;
+    static CommunicationLibrary *singletonInstance;
     QNetworkConfigurationManager manager;
     QNetworkSession *networkSession;
     QString localMachineName;
@@ -49,8 +49,9 @@ public slots:
 
 signals:
     void getInformationReady();
-//    void updateTemperatureForKitchen(int temperatureInKitchen);
-//    void updateHumidityForKitchen(int temperatureInKitchen);
+    void updateTemperatureForKitchen(int temperatureInKitchen);
+    void updateHumidityForKitchen(int temperatureInKitchen);
+    void showErrorMessage(QString errorMessage);
 };
 
 #endif // COMMUNICATIONLIBRARY_H

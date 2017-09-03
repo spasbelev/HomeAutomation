@@ -2,18 +2,21 @@
 #define MAINSCREEN_H
 
 #include <QWidget>
+#include "communicationlibrary.h"
 
 class mainScreen : public QWidget
 {
     Q_OBJECT
+private:
+
 public:
     explicit mainScreen(QWidget *parent = 0);
 
 signals:
 
 public slots:
-    void updateTemperatureForKitchen(int temperatureInKitchen);
-    void updateHumidityForKitchen(int humidityInKitchen);
+    void updateTemperatureDataForKitchen(int temperatureInKitchen);
+    void updateHumidityDataForKitchen(int humidityInKitchen);
 
 };
 
