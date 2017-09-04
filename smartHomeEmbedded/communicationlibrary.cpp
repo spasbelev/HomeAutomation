@@ -10,7 +10,7 @@ communicationLibrary::communicationLibrary(QObject *parent) : QObject(parent)
 bool communicationLibrary::connect()
 {
     tcpServer = new QTcpServer;
-    if(!tcpServer->listen())
+    if(!tcpServer->listen(QHostAddress::Any, 80))
     {
 //        sendErrorToModel("Unable to start the server.");
         tcpServer->close();
@@ -34,7 +34,13 @@ bool communicationLibrary::connect()
 }
 
 
-void communicationLibrary::readTcpData()
+void communicationLibrary::newConnection()
 {
+    QTcpSocket *tcpSocket = tcpServer->nextPendingConnection();
+    if(tcpSocket->waitForBytesWritten(30000))
+    {
+        // get the data and decide what to do
+    }
+
 
 }

@@ -11,6 +11,7 @@ class communicationLibrary : public QObject
 private:
     QTcpServer *tcpServer;
     QString ipAddress;
+    QByteArray dataReceived;
 public:
     explicit communicationLibrary(QObject *parent = 0);
     bool connect();
@@ -18,7 +19,7 @@ public:
 signals:
 
 public slots:
-    void readTcpData();
+    void newConnection();
 };
 
 #endif // COMMUNICATIONLIBRARY_H
