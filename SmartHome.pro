@@ -4,4 +4,5 @@ SUBDIRS += \
     smartHomeCore \
     smartHomeEmbeddedCore \
     loginWindow \
-    communicationLibrary
+    communicationLibrary \
+    smartHomeEmbedded
