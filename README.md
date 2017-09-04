@@ -4,14 +4,14 @@ The idea of the project is to do home automation as DIY project.
 
 ## Getting Started
 
-Orange Pi Lite board and the WiringOP library installed on to Orange pi Lite.
+Raspberry pi board and the Wiring Pi.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Wiring Pi library for the Raspbery pi GPIO
 
 ```
-Give examples
+
 ```
 
 ### Installing
@@ -57,8 +57,6 @@ Currently no versoning is supported
 See also the list of [contributors]() who participated in this project.
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
