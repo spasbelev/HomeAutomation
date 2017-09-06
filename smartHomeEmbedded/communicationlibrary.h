@@ -20,6 +20,7 @@ signals:
 
 public slots:
     void newConnection();
+    void DHT22readData(int humidity, int temperatureInCelsius, int temperatureInFarenheit);
 };
 
 #endif // COMMUNICATIONLIBRARY_H

@@ -41,6 +41,9 @@ void communicationLibrary::newConnection()
     {
         // get the data and decide what to do
     }
+}
 
+void communicationLibrary::DHT22readData(int humidity, int temperatureInCelsius, int temperatureInFarenheit)
+{
 
 }

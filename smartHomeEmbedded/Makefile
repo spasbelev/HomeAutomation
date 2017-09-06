@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -D_REENTRANT -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++11 -D_REENTRANT -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I. -I/home/spas/Qt5.8.0/5.8/gcc_64/include -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -isystem /usr/local/include -isystem /usr/local/include -I/home/spas/Qt5.8.0/5.8/gcc_64/include -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/spas/Qt5.8.0/5.8/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = smartHomeEmbedded1.0.0
 DISTDIR = /media/spas/Нов\ том4/SmartHome/smartHomeEmbedded/.tmp/smartHomeEmbedded1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/home/spas/Qt5.8.0/5.8/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/home/spas/Qt5.8.0/5.8/gcc_64/lib -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/media/spas/Нов\ том4/SmartHome/smartHomeEmbedded/../../../../../usr/local/lib/ -lwiringPi -lwiringPiDev -lcrypt -L/home/spas/Qt5.8.0/5.8/gcc_64/lib -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -49,10 +49,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		communicationlibrary.cpp moc_communicationlibrary.cpp
+		communicationlibrary.cpp \
+		sensorsmanager.cpp moc_communicationlibrary.cpp \
+		moc_sensorsmanager.cpp
 OBJECTS       = main.o \
 		communicationlibrary.o \
-		moc_communicationlibrary.o
+		sensorsmanager.o \
+		moc_communicationlibrary.o \
+		moc_sensorsmanager.o
 DIST          = /home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/common/unix.conf \
 		/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/common/linux.conf \
@@ -221,8 +225,11 @@ DIST          = /home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/features/exceptions.prf \
 		/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/features/yacc.prf \
 		/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/features/lex.prf \
-		smartHomeEmbedded.pro communicationlibrary.h main.cpp \
-		communicationlibrary.cpp
+		smartHomeEmbedded.pro communicationlibrary.h \
+		communicationmessagesdefinition.h \
+		sensorsmanager.h main.cpp \
+		communicationlibrary.cpp \
+		sensorsmanager.cpp
 QMAKE_TARGET  = smartHomeEmbedded
 DESTDIR       = 
 TARGET        = smartHomeEmbedded
@@ -594,8 +601,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents communicationlibrary.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp communicationlibrary.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents communicationlibrary.h communicationmessagesdefinition.h sensorsmanager.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp communicationlibrary.cpp sensorsmanager.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -626,9 +633,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++11 -dM -E -o moc_predefs.h /home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_communicationlibrary.cpp
+compiler_moc_header_make_all: moc_communicationlibrary.cpp moc_sensorsmanager.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_communicationlibrary.cpp
+	-$(DEL_FILE) moc_communicationlibrary.cpp moc_sensorsmanager.cpp
 moc_communicationlibrary.cpp: /home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QObject \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs.h \
@@ -702,7 +709,60 @@ moc_communicationlibrary.cpp: /home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QObje
 		communicationlibrary.h \
 		moc_predefs.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/bin/moc
-	/home/spas/Qt5.8.0/5.8/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++ -I'/media/spas/Нов том4/SmartHome/smartHomeEmbedded' -I/home/spas/Qt5.8.0/5.8/gcc_64/include -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include communicationlibrary.h -o moc_communicationlibrary.cpp
+	/home/spas/Qt5.8.0/5.8/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++ -I'/media/spas/Нов том4/SmartHome/smartHomeEmbedded' -I/usr/local/include -I/usr/local/include -I/home/spas/Qt5.8.0/5.8/gcc_64/include -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include communicationlibrary.h -o moc_communicationlibrary.cpp
+
+moc_sensorsmanager.cpp: /home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QObject \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qnamespace.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qglobal.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtcore-config.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsysinfo.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qlogging.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qflags.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtypetraits.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmutex.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qnumeric.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qversiontagging.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstring.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qchar.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearray.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qrefcount.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qarraydata.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qlist.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qalgorithms.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qiterator.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qpair.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringlist.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qregexp.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreevent.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmetatype.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h \
+		sensorsmanager.h \
+		moc_predefs.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/bin/moc
+	/home/spas/Qt5.8.0/5.8/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/spas/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++ -I'/media/spas/Нов том4/SmartHome/smartHomeEmbedded' -I/usr/local/include -I/usr/local/include -I/home/spas/Qt5.8.0/5.8/gcc_64/include -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include sensorsmanager.h -o moc_sensorsmanager.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1033,8 +1093,62 @@ communicationlibrary.o: communicationlibrary.cpp communicationlibrary.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o communicationlibrary.o communicationlibrary.cpp
 
+sensorsmanager.o: sensorsmanager.cpp sensorsmanager.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QObject \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qnamespace.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qglobal.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtcore-config.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsysinfo.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qlogging.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qflags.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtypetraits.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmutex.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qnumeric.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qversiontagging.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstring.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qchar.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearray.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qrefcount.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qarraydata.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qlist.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qalgorithms.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qiterator.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qpair.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringlist.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qregexp.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreevent.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmetatype.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sensorsmanager.o sensorsmanager.cpp
+
 moc_communicationlibrary.o: moc_communicationlibrary.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_communicationlibrary.o moc_communicationlibrary.cpp
+
+moc_sensorsmanager.o: moc_sensorsmanager.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_sensorsmanager.o moc_sensorsmanager.cpp
 
 ####### Install
 
