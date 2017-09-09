@@ -1,20 +1,19 @@
 #include "messagetranslator.h"
 #include "communicationmessagesdefinition.h"
+#include <QTcpSocket>
 
 messageTranslator::messageTranslator(QObject *parent) : QObject(parent)
 {
-    LivingRoomManagerObj = LivingRoomManager::getInstance();
 
 }
 
 messageTranslator::~messageTranslator()
 {
-    LivingRoomManagerObj = nullptr;
-    delete LivingRoomManagerObj;
+
 }
 
 
-void messageTranslator::translateMessage(QByteArray message)
+void messageTranslator::translateMessage(QByteArray message, QTcpSocket *newTcpSocket)
 {
     uint8_t messageType = message[0];
     switch(messageType)
@@ -35,6 +34,7 @@ void messageTranslator::translateMessage(QByteArray message)
         case GET_LIVINGROOM_TEMPERATURE:
         case GET_LIVINGROOM_HUMIDITY:
         {
+            emit startMonitoringLivingRoom(newTcpSocket);
             break;
 
         }

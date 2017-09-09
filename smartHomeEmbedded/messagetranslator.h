@@ -2,7 +2,8 @@
 #define MESSAGETRANSLATOR_H
 
 #include <QObject>
-#include <livingroommanager.h>
+
+class QTcpSocket;
 
 class messageTranslator : public QObject
 {
@@ -10,15 +11,14 @@ class messageTranslator : public QObject
 public:
     explicit messageTranslator(QObject *parent = 0);
     ~messageTranslator();
-    void startDHTSensorThread();
 
 private:
-    LivingRoomManager *LivingRoomManagerObj;
 
 signals:
+    void startMonitoringLivingRoom(QTcpSocket *newTcpSocket);
 
 public slots:
-    void translateMessage(QByteArray message);
+    void translateMessage(QByteArray message, QTcpSocket *newTcpSocket);
 };
 
 #endif // MESSAGETRANSLATOR_H

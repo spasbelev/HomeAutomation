@@ -1,8 +1,9 @@
 #include "communicationlibrary.h"
 #include <QtNetwork/QDnsLookup>
 #include <future>
+#include "communicationmessagesdefinition.h"
 
-
+uint8_t data[50];
 
 
 typedef enum
@@ -34,13 +35,13 @@ CommunicationLibrary::~CommunicationLibrary()
 template <typename dataTypeToBeSent>
 void CommunicationLibrary::sendInformation(int messageType, dataTypeToBeSent dataToSend)
 {
-    memcpy(&dataPacketToBeSent, messageType,sizeof(messageType) );
-    memcpy(dataPacketToBeSent + 1, dataToSend, sizeof(dataToSend));
-    tcpSocket->writeData(dataPacketToBeSent, sizeof(dataPacketToBeSent));
+    dataPacketToBeSent[0] = messageType;
+    dataPacketToBeSent[1] = dataToSend;
+    tcpSocket->write(dataPacketToBeSent.data(), dataPacketToBeSent.size());
 }
 
-template <typename dataTypeToBeSent>
-dataTypeToBeSent CommunicationLibrary::reuqestInformation(int requestForSpecificType)
+//template <typename dataTypeToBeSent>
+void CommunicationLibrary::reuqestInformation(RoomMessages requestForSpecificType)
 {
     sendInformation(requestForSpecificType,0);
     QByteArray receivedData =  tcpSocket->readAll();
@@ -51,12 +52,13 @@ CommunicationLibrary* CommunicationLibrary::returnInstance()
     return singletonInstance;
 }
 
+
 void CommunicationLibrary::connect()
 {
     QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
-    QHostAddress *hostAddres = new QHostAddress("192.168.1.1");
+    QHostAddress *hostAddres = new QHostAddress("192.168..1");
     tcpSocket = new QTcpSocket();
-    tcpSocket->connectToHost(hostAddres->toString(),80, QTcpSocket::ReadWrite);
+    tcpSocket->connectToHost(hostAddres->toString(),8080, QTcpSocket::ReadWrite);
 
     if(tcpSocket->waitForConnected(3000))
     {
@@ -100,16 +102,20 @@ void CommunicationLibrary::notifyGUI()
 
     switch(messageTye)
     {
-        case MESSAGE_WITH_INFORMATION_FROM_KITCHEN:
+        case GET_LIVINGROOM_HUMIDITY:
         {
+            emit updateHumidityForLivingRoom(dataReceived[1]);
+            break;
+        }
+        case GET_LIVINGROOM_TEMPERATURE:
+        {
+            emit updateTemperatureForLivingRoom(dataReceived[1]);
 
+        break;
         }
         case MESSAGE_WITH_INFORMATION_FROM_LIVINGROOM:
         {
-
-        }
-        case MESSAGE_WITH_INFORMATION_FROM_BATHROOM:
-        {
+            break;
         }
     }
 }

@@ -3,6 +3,7 @@
 #include "communicationlibrary.h"
 #include <QMessageBox>
 #include <cstdarg>
+#include <communicationmessagesdefinition.h>
 
 mainScreenWindow::mainScreenWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,6 +19,7 @@ mainScreenWindow::mainScreenWindow(QWidget *parent) :
 
     QObject::connect(CommunicationLibrary::returnInstance(), SIGNAL(errorMessage(QString )),
                                                                     this, SLOT(showErrorMessage(QString)));
+    CommunicationLibrary::returnInstance()->reuqestInformation(GET_LIVINGROOM_TEMPERATURE);
 }
 
 mainScreenWindow::~mainScreenWindow()

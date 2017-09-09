@@ -5,17 +5,17 @@ CONFIG += qt
 QT +=network
 
 SOURCES += main.cpp \
-    communicationlibrary.cpp \
-    sensorsmanager.cpp \
     messagetranslator.cpp \
-    livingroommanager.cpp
+    livingroommanager.cpp \
+    server.cpp \
+    communicationlibrary.cpp
 
 HEADERS += \
-    communicationlibrary.h \
     communicationmessagesdefinition.h \
-    sensorsmanager.h \
     messagetranslator.h \
-    livingroommanager.h
+    livingroommanager.h \
+    server.h \
+    communicationlibrary.h
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../usr/local/lib/release/ -lwiringPi
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../usr/local/lib/debug/ -lwiringPi

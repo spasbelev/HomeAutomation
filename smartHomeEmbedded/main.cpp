@@ -1,9 +1,8 @@
 #include <iostream>
-#include <communicationlibrary.h>
+#include <server.h>
 #include <QThread>
 #include <QCoreApplication>
-#include <sensorsmanager.h>
-
+#include <livingroommanager.h>
 
 using namespace std;
 
@@ -13,14 +12,17 @@ int main(int argc, char *argv[])
     cout << "Hello World!" << endl;
 //    QThread *serverCommunicationThread = new QThread;
 
-    communicationLibrary *communicationLibraryObj = new communicationLibrary();
+    server *serverObj = new server();
+    LivingRoomManager *LivingRoomManagerObj = LivingRoomManager::getInstance();
+    QThread *livingRoomThread = new QThread;
+    LivingRoomManagerObj->moveToThread(livingRoomThread);
 
 //    communicationLibraryObj->moveToThread(serverCommunicationThread);
 
 //    QObject::connect(serverCommunicationThread, SIGNAL(started()), communicationLibraryObj, SLOT(process()));
 //    QObject::connect(communicationLibraryObj, SIGNAL(finished()), serverCommunicationThread, SLOT(quit()));
 //    QObject::connect(serverCommunicationThread, SIGNAL(finished()), communicationLibraryObj, SLOT(deleteLater()));
-    bool didConnectSucceed = communicationLibraryObj->connect();
+    bool didConnectSucceed = serverObj->connect();
     if(didConnectSucceed)
     {
         cout << "Success";

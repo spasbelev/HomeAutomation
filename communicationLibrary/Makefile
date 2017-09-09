@@ -873,6 +873,7 @@ moc_communicationlibrary.cpp: /home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/Qt
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkversion.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QAbstractSocket \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkConfigurationManager \
+		communicationmessagesdefinition.h \
 		communicationlibrary.h \
 		moc_predefs.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/bin/moc
@@ -1184,6 +1185,7 @@ communicationlibrary.o: communicationlibrary.cpp communicationlibrary.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkversion.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QAbstractSocket \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkConfigurationManager \
+		communicationmessagesdefinition.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QDnsLookup
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o communicationlibrary.o communicationlibrary.cpp
 

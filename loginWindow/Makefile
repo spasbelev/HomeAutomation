@@ -1022,6 +1022,7 @@ moc_mvccontroller.cpp: /home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QObject \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkversion.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QAbstractSocket \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkConfigurationManager \
+		../communicationLibrary/communicationmessagesdefinition.h \
 		mainscreenwindow.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMainWindow \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -1831,6 +1832,7 @@ mvccontroller.o: mvccontroller.cpp mvccontroller.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkversion.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QAbstractSocket \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkConfigurationManager \
+		../communicationLibrary/communicationmessagesdefinition.h \
 		mainscreenwindow.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMainWindow \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -1974,178 +1976,7 @@ mainScreenScenario.o: mainScreenScenario.cpp catchheader.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui/qvector2d.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabwidget.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui/qicon.h \
-		../communicationLibrary/communicationlibrary.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QtNetwork \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QtNetworkDepends \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QtCore \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QtCoreDepends \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qabstractanimation.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qabstracteventdispatcher.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qeventloop.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qabstractproxymodel.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qabstractstate.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qabstracttransition.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qanimationgroup.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qarraydataops.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qarraydatapointer.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbasictimer.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbitarray.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbuffer.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearraymatcher.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcache.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcollator.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcommandlineoption.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcommandlineparser.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qcryptographichash.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qdatetime.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qdeadlinetimer.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qelapsedtimer.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qdir.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qfileinfo.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qdiriterator.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qeasingcurve.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qendian.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qeventtransition.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qexception.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qfactoryinterface.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qfileselector.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QObject \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QStringList \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qfilesystemwatcher.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qfinalstate.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qfuture.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qfutureinterface.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qrunnable.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qresultstore.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qfuturesynchronizer.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qfuturewatcher.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qhistorystate.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qidentityproxymodel.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qisenum.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qjsonarray.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qjsonvalue.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qjsondocument.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qjsonobject.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qlibrary.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qlibraryinfo.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qversionnumber.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qlinkedlist.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qlockfile.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qloggingcategory.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmath.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmessageauthenticationcode.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmetaobject.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmimedata.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmimedatabase.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qmimetype.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectcleanuphandler.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qparallelanimationgroup.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qpauseanimation.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qplugin.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qpointer.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qpluginloader.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qprocess.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qpropertyanimation.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qvariantanimation.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qqueue.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qreadwritelock.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qregularexpression.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qresource.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsavefile.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qscopedvaluerollback.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsemaphore.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsequentialanimationgroup.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsettings.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsharedmemory.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsignalmapper.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsignaltransition.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsocketnotifier.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsortfilterproxymodel.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstack.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstandardpaths.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstate.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstatemachine.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstorageinfo.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringlistmodel.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qsystemsemaphore.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtemporarydir.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QScopedPointer \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtemporaryfile.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtextboundaryfinder.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtextcodec.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qthread.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qthreadpool.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qthreadstorage.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtimeline.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtimer.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtimezone.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtranslator.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/quuid.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qwaitcondition.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qwineventnotifier.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qxmlstream.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qtcoreversion.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qabstractnetworkcache.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkrequest.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QSharedDataPointer \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QString \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QUrl \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QVariant \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qabstractsocket.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qauthenticator.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qdnslookup.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qhostaddress.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qhostinfo.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qhttpmultipart.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QByteArray \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QIODevice \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkRequest \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qlocalserver.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qlocalsocket.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QSslConfiguration \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslconfiguration.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslsocket.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtcpsocket.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslerror.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslcertificate.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qssl.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QFlags \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QMetaType \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkconfigmanager.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkcookie.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QList \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkcookiejar.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkdatagram.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkdiskcache.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkinterface.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkproxy.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworkreply.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkAccessManager \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qnetworksession.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsctpserver.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtcpserver.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsctpsocket.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslcertificateextension.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslcipher.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qssldiffiehellmanparameters.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslellipticcurve.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QHash \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslkey.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qudpsocket.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkversion.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QAbstractSocket \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkConfigurationManager
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainScreenScenario.o mainScreenScenario.cpp
 
 livingroomscreen.o: livingroomscreen.cpp livingroomscreen.h \
@@ -2424,7 +2255,8 @@ livingroomscreen.o: livingroomscreen.cpp livingroomscreen.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qudpsocket.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkversion.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QAbstractSocket \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkConfigurationManager
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkConfigurationManager \
+		../communicationLibrary/communicationmessagesdefinition.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o livingroomscreen.o livingroomscreen.cpp
 
 mainscreenwindow.o: mainscreenwindow.cpp mainscreenwindow.h \
@@ -2705,6 +2537,7 @@ mainscreenwindow.o: mainscreenwindow.cpp mainscreenwindow.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkversion.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QAbstractSocket \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtNetwork/QNetworkConfigurationManager \
+		../communicationLibrary/communicationmessagesdefinition.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMessageBox \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qdialog.h

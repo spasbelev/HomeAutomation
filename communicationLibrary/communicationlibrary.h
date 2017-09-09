@@ -6,6 +6,7 @@
 class QByteArray;
 #include <QAbstractSocket>
 #include <QNetworkConfigurationManager>
+#include "communicationmessagesdefinition.h"
 
 class CommunicationLibrary : public QObject
 {
@@ -15,8 +16,8 @@ public:
     template <typename dataTypeToBeSent>
     void sendInformation(int messageType, dataTypeToBeSent dataToSend);
 
-    template <typename dataTypeToBeSent>
-    dataTypeToBeSent reuqestInformation(int requestForSpecificType);
+//    template <typename dataTypeToBeSent>
+    void reuqestInformation(RoomMessages requestForSpecificType);
     static CommunicationLibrary* returnInstance();
     ~CommunicationLibrary();
     CommunicationLibrary(const CommunicationLibrary &CommunicationLibraryInstance)=default;
@@ -46,6 +47,7 @@ private:
 public slots:
     void readTcpData();
     void notifyGUI();
+
 
 signals:
     void getInformationReady();

@@ -28,6 +28,10 @@ public slots:
     void showErrorMessage(QString messages...);
 private slots:
     void on_bedroom_clicked();
+
+signals:
+    void sendInformationToServer(int messageType, QByteArray dataToSend);
+
 };
 
 #endif // MAINSCREENWINDOW_H
