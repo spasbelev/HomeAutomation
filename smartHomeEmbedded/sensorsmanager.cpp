@@ -2,6 +2,7 @@
 #include <wiringPi.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <QThread>
 
 
 #define MAX_TIMINGS	85
@@ -12,6 +13,11 @@ int data[5] = { 0, 0, 0, 0, 0 };
 sensorsManager::sensorsManager(QObject *parent) : QObject(parent)
 {
     wiringPiSetup();
+}
+
+void sensorsManager::startDHTSensorThread()
+{
+
 }
 
 

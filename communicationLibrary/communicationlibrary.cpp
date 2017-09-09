@@ -54,7 +54,7 @@ CommunicationLibrary* CommunicationLibrary::returnInstance()
 void CommunicationLibrary::connect()
 {
     QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
-    QHostAddress *hostAddres = new QHostAddress("192.168.0.1");
+    QHostAddress *hostAddres = new QHostAddress("192.168.1.1");
     tcpSocket = new QTcpSocket();
     tcpSocket->connectToHost(hostAddres->toString(),80, QTcpSocket::ReadWrite);
 

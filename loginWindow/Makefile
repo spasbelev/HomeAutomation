@@ -1422,7 +1422,9 @@ main.o: main.cpp mainwindow.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qeventloop.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui/qguiapplication.h \
-		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui/qinputmethod.h
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtGui/qinputmethod.h \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/QThread \
+		/home/spas/Qt5.8.0/5.8/gcc_64/include/QtCore/qthread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
